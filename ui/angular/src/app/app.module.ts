@@ -16,7 +16,7 @@ import 'hammerjs';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserAnimationsModule
   ],
   providers: [],
