@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.rainston</groupId>
-    <artifactId>stock-io-daily-processor</artifactId>
-    <packaging>jar</packaging>
+	<artifactId>stock-io-daily-processor</artifactId>
+	<packaging>jar</packaging>
 
-    <name>stock-io-daily-processor</name>
-    <description>stock.io daily processor service</description>
+	<name>stock-io-daily-processor</name>
+	<description>stock.io daily processor service</description>
 
-    <parent>
-    	<groupId>com.rainston.parent</groupId>
-        <artifactId>stock-io</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>com.rainston.parent</groupId>
+		<artifactId>stock-io</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
 	<dependencies>
 		<dependency>
@@ -46,14 +46,14 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			
+
 			<dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
