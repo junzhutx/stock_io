@@ -5,14 +5,6 @@ ui/.settings/
 ui/src/main/resources/static/
 ui/angular/node_modules/
 ui/angular/dist/
-backend/target
-backend/.classpath
-backend/.project
-backend/.settings/
-hystrix-dashboard/.classpath
-hystrix-dashboard/.project
-hystrix-dashboard/.settings/
-hystrix-dashboard/target
 service-discovery/.classpath
 service-discovery/.project
 service-discovery/.settings/
