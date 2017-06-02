@@ -19,5 +19,6 @@
 		<module>daily-processor</module>
 		<module>ui</module>
 		<module>service-discovery</module>
+		<module>company-list</module>
 	</modules>
 </project>

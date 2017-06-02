@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.rainston</groupId>
-	<artifactId>stock-io-daily-processor</artifactId>
+	<artifactId>stock-io-company-list</artifactId>
 	<packaging>jar</packaging>
 
-	<name>stock-io-daily-processor</name>
+	<name>stock-io-company-list</name>
 	<description>stock.io daily processor service</description>
 
 	<parent>
@@ -28,6 +28,10 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
