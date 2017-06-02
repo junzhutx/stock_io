@@ -1,7 +1,12 @@
 spring:
   application:
     name: stock-io-company-list
-    
+
+cloud:
+  aws:
+    region:
+      static: eu-west-1
+        
 server:
   port: 8082
   
@@ -15,4 +20,3 @@ eureka:
 ribbon:
   eureka:
     enabled: true
- 

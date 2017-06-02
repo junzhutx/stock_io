@@ -5,7 +5,12 @@ spring:
     config:
       discovery:
         enabled: true
-  
+ 
+cloud:
+  aws:
+    region:
+      static: eu-west-1
+ 
 server:
   port: 8761
 
