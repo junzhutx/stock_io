@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.rainston.parent</groupId>
 	<artifactId>stock-io</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${global.version}</version>
 	<packaging>pom</packaging>
 	<name>stock-io</name>
 
@@ -13,9 +13,11 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Dalston.SR1</spring-cloud.version>
 		<spring.boot.version>1.5.3.RELEASE</spring.boot.version>
+		<global.version>0.0.1-SNAPSHOT</global.version>
 	</properties>
 
 	<modules>
+		<module>common</module>
 		<module>daily-processor</module>
 		<module>ui</module>
 		<module>service-discovery</module>

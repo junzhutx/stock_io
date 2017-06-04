@@ -13,7 +13,7 @@
 	<parent>
 		<groupId>com.rainston.parent</groupId>
 		<artifactId>stock-io</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${global.version}</version>
 	</parent>
 
 	<dependencyManagement>
