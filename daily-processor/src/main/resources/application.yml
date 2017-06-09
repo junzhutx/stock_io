@@ -1,11 +1,16 @@
 spring:
   application:
     name: stock-io-daily-processor
+  data:
+    mongodb:
+      host: 192.168.1.123
+      port: 27017
+      database: company-list
 
 cloud:
   aws:
     region:
-      static: eu-west-1
+      static: us-west-2
     
 server:
   port: 8081
@@ -20,6 +25,6 @@ eureka:
 ribbon:
   eureka:
     enabled: true
- 
+
 
     

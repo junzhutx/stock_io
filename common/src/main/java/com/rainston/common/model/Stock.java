@@ -1,7 +1,6 @@
 package com.rainston.common.model;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="stock")
@@ -9,9 +8,7 @@ public class Stock {
 	@Id
 	private long id;
 	
-	@Indexed(unique=true)
-	private String symbol;
-	
+	private String symbol;	
 	private String qouteDate;
 	private String name;
 	private double lastSale;
