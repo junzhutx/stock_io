@@ -2,6 +2,36 @@ version: "3"
 
 services:
 
+  stock-io-daily-processor:
+    image: junzhutx/stock-io-daily-processor
+    ports:
+      - 8082:8082
+    links:
+      - discovery
+      - mongo
+    volumes:
+      - /home/junzhu/companylists/:/data/inbox
+
+  stock-io-company-list:
+    image: junzhutx/stock-io-company-list
+    ports:
+      - 8083:8083
+    links:
+      - discovery
+      - mongo
+      
+  stock-io-ui:
+    image: junzhutx/stock-io-ui
+    ports:
+      - 80:8080
+    links:
+      - discovery
+
+  stock-io-service-discovery:
+    image: junzhutx/stock-io-service-discovery
+    ports:
+      - 8761:8761
+
   mongo:
     image: mongo
     ports:
