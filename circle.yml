@@ -9,6 +9,7 @@ dependencies:
     - ./buildui.sh
 general:
   artifacts:
+    - "common/target/common-0.0.1-SNAPSHOT.jar"
     - "ui/target/stock-io-ui-0.0.1-SNAPSHOT.jar"
     - "company-list/target/stock-io-company-list-0.0.1-SNAPSHOT.jar"
     - "daily-processor/target/stock-io-daily-processor-0.0.1-SNAPSHOT.jar"
