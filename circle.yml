@@ -1,0 +1,24 @@
+machine:
+  node:
+    version: 6.9.0
+  services:
+    - docker
+dependencies:
+  pre:
+    - npm install @angular/cli@latest -g
+    - ./buildui.sh
+general:
+  artifacts:
+    - "ui/target/stock-io-ui-0.0.1-SNAPSHOT.jar"
+    - "company-list/target/stock-io-company-list-0.0.1-SNAPSHOT.jar"
+    - "daily-processor/target/stock-io-daily-processor-0.0.1-SNAPSHOT.jar"
+    - "service-discovery/target/stock-io-service-discovery-0.0.1-SNAPSHOT.jar"
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -e $DOCKERHUB_EMAIL -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
+      - docker push junzhutx/stock-io-ui
+      - docker push junzhutx/stock-io-company-list
+      - docker push junzhutx/stock-io-daily-processor
+      - docker push junzhutx/stock-io-service-discovery
