@@ -75,9 +75,40 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
 			</plugin>
-		</plugins>
+		
+			<plugin>
+	  			<groupId>io.fabric8</groupId>
+	  			<artifactId>docker-maven-plugin</artifactId>
+	  			<version>0.20.1</version>
+	  			<configuration>
+	
+				   <images>
+				     <image>
+				       <name>junzhutx/stock-io-daily-processor:latest</name>
+				       <build>
+				       	<dockerFileDir>${basedir}</dockerFileDir>
+				       </build>
+				     </image>
+				   </images>
+				</configuration>
+			 	<executions>
+                    <execution>
+                        <id>docker</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+				</executions>	 
+	  		</plugin>
+	  	</plugins>
 	</build>
-
-
 </project>
