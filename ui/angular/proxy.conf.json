@@ -1,0 +1,13 @@
+{
+   "/stock-io-company-list": {
+      "target": "http://192.168.1.123:8083",
+      "secure": false,
+      "pathRewrite": {"^/stock-io-company-list" : ""}
+   },
+   "/stock-io-daily-processor": {
+      "target": "http://192.168.1.123:8082",
+      "secure": false,
+      "pathRewrite": {"^/stock-io-daily-processor" : ""}
+   }
+   
+}
