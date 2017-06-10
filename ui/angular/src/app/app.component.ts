@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { ITdDataTableColumn, IPageChangeEvent, TdDataTableService, ITdDataTableSelectEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder } from '@covalent/core';
 
 @Component({
@@ -37,7 +37,9 @@ export class AppComponent {
     .map(response => response.json())
     .subscribe(res => this.dailyProcessorVersion = res);
 
-    this.http.get('stock-io-company-list/lists/20170601')
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    this.http.post('stock-io-company-list/lists/20170601', {}, options)
     .map(response => response.json().companies)
     .subscribe(res => {
       this.stocks = res;
