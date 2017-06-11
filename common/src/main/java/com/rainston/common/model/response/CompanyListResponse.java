@@ -2,16 +2,16 @@ package com.rainston.common.model.response;
 
 import java.util.List;
 
-import com.rainston.common.model.Stock;
+import com.rainston.common.model.Company;
 
 public class CompanyListResponse extends BaseResponse {
-	List<Stock> companies;
+	List<Company> companies;
 
-	public List<Stock> getCompanies() {
+	public List<Company> getCompanies() {
 		return companies;
 	}
 
-	public void setCompanies(List<Stock> companies) {
+	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
 	}
 }

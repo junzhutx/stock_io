@@ -21,8 +21,6 @@ export class AppComponent {
   columns: ITdDataTableColumn[] = [
     { name: 'Symbol', label: 'Symbol', tooltip: 'Stock Symbol' },
     { name: 'Name', label: 'Name', tooltip: 'Company Name' },
-    { name: 'LastSale', label: 'Last Sale', tooltip: 'Last Trading Price' },
-    { name: 'MarketCap', label: 'Market Cap', tooltip: 'Market Cap' },
     { name: 'IPOyear', label: 'IPO Year', tooltip: 'IPO Year' },
     { name: 'Sector', label: 'Sector', tooltip: 'Sector' },
     { name: 'industry', label: 'Industry', tooltip: 'industry' }
@@ -39,7 +37,7 @@ export class AppComponent {
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    this.http.post('stock-io-company-list/lists/20170601', {}, options)
+    this.http.post('stock-io-company-list/lists', {}, options)
     .map(response => response.json().companies)
     .subscribe(res => {
       this.stocks = res;
