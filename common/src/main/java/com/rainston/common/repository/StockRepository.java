@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
-public interface StockRepository extends MongoRepository<Stock, Long> {
+public interface StockRepository extends MongoRepository<Stock, String> {
 	
 	@Query("{symbol:'?0'}")
     List<Stock> findBySymbol(String symbol);

@@ -8,21 +8,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Company {
 
 	@Id
-	private long id;
+	private String id;
 
 	@Indexed(unique=true)
 	private String symbol;
 	private String name;
-	private int ipoYear;
+	private String ipoYear;
 	private String sector;
 	private String industry;
 	private String exchange;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -42,11 +42,11 @@ public class Company {
 		this.name = name;
 	}
 
-	public int getIpoYear() {
+	public String getIpoYear() {
 		return ipoYear;
 	}
 
-	public void setIpoYear(int ipoYear) {
+	public void setIpoYear(String ipoYear) {
 		this.ipoYear = ipoYear;
 	}
 

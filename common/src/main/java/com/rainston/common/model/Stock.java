@@ -6,18 +6,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="stock")
 public class Stock {
 	@Id
-	private long id;
+	private String id;
 	
 	private String symbol;
-	private String qouteDate;
+	private String quoteDate;
 	private double lastSale;
-	private double marketCap;
+	private String marketCap;
 	
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
@@ -29,12 +29,12 @@ public class Stock {
 		this.symbol = symbol;
 	}
 	
-	public String getQouteDate() {
-		return qouteDate;
+	public String getQuoteDate() {
+		return quoteDate;
 	}
 
-	public void setQouteDate(String qouteDate) {
-		this.qouteDate = qouteDate;
+	public void setQouteDate(String quoteDate) {
+		this.quoteDate = quoteDate;
 	}
 	
 	public double getLastSale() {
@@ -45,11 +45,11 @@ public class Stock {
 		this.lastSale = lastSale;
 	}
 	
-	public double getMarketCap() {
+	public String getMarketCap() {
 		return marketCap;
 	}
 	
-	public void setMarketCap(double marketCap) {
+	public void setMarketCap(String marketCap) {
 		this.marketCap = marketCap;
 	}	
 }
