@@ -19,10 +19,10 @@ export class AppComponent {
 
   // "Symbol","Name","LastSale","MarketCap","IPOyear","Sector","industry","Summary Quote",
   columns: ITdDataTableColumn[] = [
-    { name: 'Symbol', label: 'Symbol', tooltip: 'Stock Symbol' },
-    { name: 'Name', label: 'Name', tooltip: 'Company Name' },
-    { name: 'IPOyear', label: 'IPO Year', tooltip: 'IPO Year' },
-    { name: 'Sector', label: 'Sector', tooltip: 'Sector' },
+    { name: 'symbol', label: 'Symbol', tooltip: 'Stock Symbol' },
+    { name: 'name', label: 'Name', tooltip: 'Company Name' },
+    { name: 'ipoyear', label: 'IPO Year', tooltip: 'IPO Year' },
+    { name: 'sector', label: 'Sector', tooltip: 'Sector' },
     { name: 'industry', label: 'Industry', tooltip: 'industry' }
   ];
 
