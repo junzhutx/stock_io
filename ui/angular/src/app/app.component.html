@@ -30,8 +30,7 @@
       [selectable]="false"
       [multiple]="false"
       [sortable]="false"
-      [sortOrder]="'ASC'"
-      (sortChange)="sort($event)">
+      [sortOrder]="'ASC'">
     </td-data-table>
     <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
       <span td-paging-bar-label hide-xs>Row per page:</span>
