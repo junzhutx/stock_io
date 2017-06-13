@@ -20,7 +20,7 @@ export class AppComponent {
   columns: ITdDataTableColumn[] = [
     { name: 'symbol', label: 'Symbol', tooltip: 'Stock Symbol' },
     { name: 'name', label: 'Name', tooltip: 'Company Name' },
-    { name: 'ipoyear', label: 'IPO Year', tooltip: 'IPO Year' },
+    { name: 'ipoYear', label: 'IPO Year', tooltip: 'IPO Year' },
     { name: 'sector', label: 'Sector', tooltip: 'Sector' },
     { name: 'industry', label: 'Industry', tooltip: 'industry' }
   ];
