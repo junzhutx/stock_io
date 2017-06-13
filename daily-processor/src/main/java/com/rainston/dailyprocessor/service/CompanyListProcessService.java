@@ -12,5 +12,7 @@ public interface CompanyListProcessService {
 	public static final String CSV_HEADER_SECTOR 	= "Sector";
 	public static final String CSV_HEADER_INDUSTRY 	= "industry";
 	
+	public static final String CSV_FILE_DIR 		= "/data/inbox/";
+	
 	public boolean processNewFiles();	
 }

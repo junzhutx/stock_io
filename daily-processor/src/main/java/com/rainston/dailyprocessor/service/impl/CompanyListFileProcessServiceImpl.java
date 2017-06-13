@@ -1,15 +1,13 @@
 package com.rainston.dailyprocessor.service.impl;
 
-import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.Reader;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import com.rainston.common.model.Company;
 import com.rainston.common.model.Processedcsv;
@@ -33,18 +31,17 @@ public class CompanyListFileProcessServiceImpl implements CompanyListProcessServ
 	
 	public boolean processNewFiles() {
 		try {
-			PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-			
 			for (String exchange : patterns) {
-				Resource[] resources = resolver.getResources("/" + exchange + "/**");
-				for (Resource res : resources) {
-					System.out.println("Got a file " + res.getFilename() + " " + res.lastModified());
-					Processedcsv pcsv = processedcsvRepo.findByFilename(res.getFilename());
-					String quoteDate = FileProcessorUtils.getQuoteDate(res.getFilename());
+				File dir = new File(CSV_FILE_DIR + exchange);
+				File[] files = dir.listFiles();
+				for (File file : files) {
+					String fileName = file.getName();
+					System.out.println("Got a file " + fileName + " " + file.lastModified());
+					Processedcsv pcsv = processedcsvRepo.findByFilename(fileName);
+					String quoteDate = FileProcessorUtils.getQuoteDate(fileName);
 					if (pcsv == null) {
-						InputStream is = res.getInputStream();
-						BufferedReader br = new BufferedReader(new InputStreamReader(is));
-						Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(br);
+						Reader is = new FileReader(file);
+						Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(is);
 						for (CSVRecord record : records) {
 							String symbol = record.get(CSV_HEADER_SYMBOL);
 							Company aCompany = companyRepository.findBySymbol(symbol);
@@ -72,9 +69,9 @@ public class CompanyListFileProcessServiceImpl implements CompanyListProcessServ
 							stockRepository.save(stock);
 						}
 						pcsv = new Processedcsv();
-						pcsv.setFileName(res.getFilename());
-						pcsv.setFileSize(res.contentLength());
-						pcsv.setFileCreateTime(res.lastModified());
+						pcsv.setFileName(fileName);
+						pcsv.setFileSize(file.length());
+						pcsv.setFileCreateTime(file.lastModified());
 						processedcsvRepo.save(pcsv);
 					}
 				}
