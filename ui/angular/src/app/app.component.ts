@@ -8,7 +8,6 @@ import { ITdDataTableColumn, IPageChangeEvent, TdDataTableService, ITdDataTableS
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  stocks: Array<any>;
   filteredStocks: Array<any>;
   filteredTotal: number;
   fromRow: number = 1;
@@ -35,13 +34,18 @@ export class AppComponent {
     .map(response => response.json())
     .subscribe(res => this.dailyProcessorVersion = res);
 
+    this.getCompanyList();
+  }
+
+  getCompanyList() {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    this.http.post('stock-io-company-list/lists', {}, options)
-    .map(response => response.json().companies)
+    let theUrl = 'stock-io-company-list/lists?page='+(this.currentPage-1)+'&count='+this.pageSize;
+    this.http.post(theUrl, {}, options)
+    .map(response => response.json())
     .subscribe(res => {
-      this.stocks = res;
-      this.filter();
+      this.filteredStocks = res.companies;
+      this.filteredTotal = res.totalElements;
     });
   }
 
@@ -49,20 +53,20 @@ export class AppComponent {
     this.fromRow = pagingEvent.fromRow;
     this.currentPage = pagingEvent.page;
     this.pageSize = pagingEvent.pageSize;
-    this.filter();
+    this.getCompanyList();
   }
 
-  sort(sortEvent: ITdDataTableSortChangeEvent): void {
-    this.sortBy = sortEvent.name;
-    this.sortOrder = sortEvent.order;
-    this.filter();
-  }
+  // sort(sortEvent: ITdDataTableSortChangeEvent): void {
+  //   this.sortBy = sortEvent.name;
+  //   this.sortOrder = sortEvent.order;
+  //   this.filter();
+  // }
 
-  filter() {
-    let newData: Array<any> = this.stocks;
-    this.filteredTotal = this.stocks.length;
-    newData = this.tdDataService.sortData(newData, this.sortBy, this.sortOrder);
-    newData = this.tdDataService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
-    this.filteredStocks = newData;
-  }
+  // filter() {
+  //   let newData: Array<any> = this.stocks;
+  //   this.filteredTotal = this.stocks.length;
+  //   newData = this.tdDataService.sortData(newData, this.sortBy, this.sortOrder);
+  //   newData = this.tdDataService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+  //   this.filteredStocks = newData;
+  // }
 }

@@ -12,8 +12,3 @@ eureka:
       defaultZone: http://discovery:8761/eureka/
   instance:
     preferIpAddress: true
-    
-stock-io-company-list:
-  ribbon:
-    eureka:
-      enabled: true

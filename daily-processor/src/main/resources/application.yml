@@ -6,11 +6,6 @@ spring:
       host: mongo
       port: 27017
       database: company-list
-
-cloud:
-  aws:
-    region:
-      static: us-west-2
     
 server:
   port: 8082
