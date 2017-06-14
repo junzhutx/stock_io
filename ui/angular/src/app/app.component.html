@@ -1,42 +1,11 @@
-<!--<h1>
-  {{title}}
-</h1>-->
-<md-toolbar color="primary">
-  <span>stock.io screener</span>
-  <span class="spacer"></span>
-  <button md-icon-button [mdMenuTriggerFor]="menu">
-      <md-icon>more_vert</md-icon>
-  </button>
-  <md-menu #menu="mdMenu">
-    <button md-menu-item>
-        <md-icon>fingerprint</md-icon>
-        <span>Login</span>
-      </button>
-    <button md-menu-item>
-        <md-icon>announcement</md-icon>
-        <span>Issues</span>
-      </button>
-    <button md-menu-item>
-        <md-icon>notifications_off</md-icon>
-        <span>Disable alerts</span>
-      </button>
-  </md-menu>
-</md-toolbar>
-<md-tab-group>
-<md-tab label="Stock List">
-    <td-data-table
-      [data]="filteredStocks"
-      [columns]="columns"
-      [selectable]="false"
-      [multiple]="false"
-      [sortable]="false"
-      [sortOrder]="'ASC'">
-    </td-data-table>
-    <td-paging-bar #pagingBar [pageSizes]="[10, 15, 20, 50]" [total]="filteredTotal" (change)="page($event)">
-      <span td-paging-bar-label hide-xs>Row per page:</span>
-      {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-    </td-paging-bar>
-  </md-tab>
-  <md-tab label="Settings">
-  </md-tab>
-</md-tab-group>
+<app-header></app-header>
+<nav md-tab-nav-bar aria-label="weather navigation links">
+    <a md-tab-link
+       *ngFor="let tabLink of tabLinks; let i = index"
+       [routerLink]="tabLink.link"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+      {{tabLink.label}}
+    </a>
+  </nav>
+<router-outlet></router-outlet>

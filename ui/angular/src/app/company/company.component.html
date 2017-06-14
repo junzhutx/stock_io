@@ -1,0 +1,12 @@
+<td-data-table
+  [data]="filteredStocks"
+  [columns]="columns"
+  [selectable]="false"
+  [multiple]="false"
+  [sortable]="false"
+  [sortOrder]="'ASC'">
+</td-data-table>
+<td-paging-bar #pagingBar [pageSizes]="[10, 15, 20, 50]" [total]="filteredTotal" (change)="page($event)">
+  <span td-paging-bar-label hide-xs>Row per page:</span>
+  {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+</td-paging-bar>
