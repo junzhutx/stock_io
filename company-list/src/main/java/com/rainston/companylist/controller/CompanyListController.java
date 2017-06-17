@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,12 +31,13 @@ public class CompanyListController {
 	CompanyRepository companyRepository;
 	
 	@RequestMapping(value="/lists", method=RequestMethod.POST)
-	public CompanyListResponse getCompanyList(@RequestParam("page") int page, @RequestParam("count") int count) {
+	public CompanyListResponse getCompanyList(@RequestParam("page") int page, @RequestParam("count") int count, @RequestParam("sortBy") String sortBy, @RequestParam("order") String order) {
 		CompanyListResponse response = new CompanyListResponse();
 		response.setErrorCode(ErrorCode.OK);
 		response.setErrorMessage("Success!");
 		
-		Pageable p = new PageRequest(page, count);
+		Sort sort = new Sort(Direction.fromString(order), sortBy);
+		Pageable p = new PageRequest(page, count, sort);
 		Page<Company> theList = companyRepository.findAll(p);
 		response.setCompanies(theList.getContent());
 		response.setTotalPages(theList.getTotalPages());

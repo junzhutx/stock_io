@@ -3,8 +3,9 @@
   [columns]="columns"
   [selectable]="false"
   [multiple]="false"
-  [sortable]="false"
-  [sortOrder]="'ASC'">
+  [sortable]="true"
+  [sortOrder]="sortOrder"
+  (sortChange)="sort($event)">
 </td-data-table>
 <td-paging-bar #pagingBar [pageSizes]="[10, 15, 20, 50]" [total]="filteredTotal" (change)="page($event)">
   <span td-paging-bar-label hide-xs>Row per page:</span>

@@ -15,8 +15,8 @@ export class CompanyComponent implements OnInit {
   fromRow = 1;
   currentPage = 1;
   pageSize = 10;
-  sortBy = '';
-  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
+  sortBy = 'symbol';
+  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
   // "Symbol","Name","LastSale","MarketCap","IPOyear","Sector","industry","Summary Quote",
   columns: ITdDataTableColumn[] = [
@@ -36,7 +36,8 @@ export class CompanyComponent implements OnInit {
   getCompanyList() {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
-    const theUrl = 'stock-io-company-list/lists?page=' + (this.currentPage - 1) + '&count=' + this.pageSize;
+    let order = this.sortOrder === TdDataTableSortingOrder.Ascending? 'ASC' : 'DESC';
+    const theUrl = 'stock-io-company-list/lists?page=' + (this.currentPage - 1) + '&count=' + this.pageSize + '&sortBy=' + this.sortBy + '&order=' + order;
     this.http.post(theUrl, {}, options)
     .map(response => response.json())
     .subscribe(res => {
@@ -52,11 +53,11 @@ export class CompanyComponent implements OnInit {
     this.getCompanyList();
   }
 
-  // sort(sortEvent: ITdDataTableSortChangeEvent): void {
-  //   this.sortBy = sortEvent.name;
-  //   this.sortOrder = sortEvent.order;
-  //   this.filter();
-  // }
+  sort(sortEvent: ITdDataTableSortChangeEvent): void {
+    this.sortBy = sortEvent.name;
+    this.sortOrder = sortEvent.order;
+    this.getCompanyList();
+  }
 
   // filter() {
   //   let newData: Array<any> = this.stocks;
