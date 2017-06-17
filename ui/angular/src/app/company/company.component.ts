@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ITdDataTableColumn, IPageChangeEvent, TdDataTableService, ITdDataTableSelectEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder } from '@covalent/core';
+import { ITdDataTableColumn, IPageChangeEvent, TdDataTableService,
+  ITdDataTableSelectEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder
+} from '@covalent/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 
 @Component({
@@ -10,10 +12,10 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 export class CompanyComponent implements OnInit {
   filteredStocks: Array<any>;
   filteredTotal: number;
-  fromRow: number = 1;
-  currentPage: number = 1;
-  pageSize: number = 10;
-  sortBy: string = '';
+  fromRow = 1;
+  currentPage = 1;
+  pageSize = 10;
+  sortBy = '';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   // "Symbol","Name","LastSale","MarketCap","IPOyear","Sector","industry","Summary Quote",
@@ -32,9 +34,9 @@ export class CompanyComponent implements OnInit {
   }
 
   getCompanyList() {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    let theUrl = 'stock-io-company-list/lists?page='+(this.currentPage-1)+'&count='+this.pageSize;
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    const theUrl = 'stock-io-company-list/lists?page=' + (this.currentPage - 1) + '&count=' + this.pageSize;
     this.http.post(theUrl, {}, options)
     .map(response => response.json())
     .subscribe(res => {

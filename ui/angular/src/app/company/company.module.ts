@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompanyComponent } from './company.component';
-import { companyRoutingModule } from "./company.routing";
+import { companyRoutingModule } from './company.routing';
 import { CovalentLayoutModule, CovalentStepsModule, CovalentDataTableModule, CovalentPagingModule } from '@covalent/core';
 
 @NgModule({

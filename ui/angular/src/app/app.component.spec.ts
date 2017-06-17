@@ -1,13 +1,26 @@
 import { TestBed, async } from '@angular/core/testing';
 
+import { MaterialModule } from '@angular/material';
+
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { appRoutingModule } from './app.routing';
+import { APP_BASE_HREF } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        HeaderComponent
       ],
+      imports: [
+        MaterialModule,
+        appRoutingModule,
+        HttpModule
+      ],
+      providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     }).compileComponents();
   }));
 
